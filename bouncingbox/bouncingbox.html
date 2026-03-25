@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" height="800" width="900"></canvas>
+    <img
+      id="box"
+      src="https://static.vecteezy.com/system/resources/thumbnails/027/254/789/small/cardboard-box-isolated-on-transparent-background-file-cut-out-ai-generated-png.png"
+    />
+  </body>
+</html>
+<script>
+  let x = 0;
+  let y = 0;
+  let directionx = 1;
+  let directiony = 1;
+  let canvas = document.getElementById("canvas");
+  let box = document.getElementById("box");
+  setInterval(moveBox, 16);
+  let ctx = canvas.getContext("2d");
+  ctx.drawImage(box, x, y, 100, 110);
+  function moveBox() {
+    ctx.clearRect(0, 0, 900, 800);
+    if (x > 800) {
+      directionx = -1;
+    }
+    if (x < 0) {
+      directionx = 1;
+    }
+    x = x + directionx * 5;
+
+    if (y > 690) {
+      directiony = -1;
+    }
+    if (y < 0) {
+      directiony = 1;
+    }
+    y = y + directiony * 5;
+    ctx.drawImage(box, x, y, 100, 110);
+  }
+  //make box move 5px repeatedly
+</script>

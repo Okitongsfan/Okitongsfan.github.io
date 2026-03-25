@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <canvas id="canvas" height="100%" width="100%"></canvas>
+    <img
+      id="box"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbBBPg3eK7g5IZqbHpYHzkzBVhmdTm1HZpOQ4rIlWp0gY3yjA:https://media.licdn.com/dms/image/v2/D5603AQHEbl2-VRGAng/profile-displayphoto-shrink_200_200/B56ZOwtYrtG4AY-/0/1733836508467%3Fe%3D2147483647%26v%3Dbeta%26t%3DisqNqE0BjbbXoVYSwwjMQFD5s3JG3pEzJ0pFV5U1Q_E&s"
+  </body>
+</html>
+<script>
+  let x = [];
+  let y = [];
+  let directionx = [];
+  let directiony = [];
+  for (var i = 0; i < 100; i = i + 1) {
+    x.push(Math.random() * 50 + 50);
+    y.push(Math.random() * 50 + 50);
+    directionx.push(Math.random() * 5);
+    directiony.push(Math.random() * 5);
+  }
+
+  let canvas = document.getElementById("canvas");
+  let box = document.getElementById("box");
+  let ctx = canvas.getContext("2d");
+
+  setInterval(moveBox, 1 / 120);
+
+  function moveBox() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (i = 0; i < 100; i = i + 1) {
+      ctx.drawImage(box, x[i], y[i], 100, 110);
+      if (x[i] > canvas.width - 100) {
+        directionx[i] = -directionx[i];
+      }
+      if (x[i] < 0) {
+        directionx[i] = -directionx[i];
+      }
+
+      if (y[i] > canvas.height - 110) {
+        directiony[i] = -directiony[i];
+      }
+      if (y[i] < 0) {
+        directiony[i] = -directiony[i];
+      }
+      y[i] = y[i] + directiony[i];
+      x[i] = x[i] + directionx[i];
+    }
+  }
+
+  //make box move 5px repeatedly
+</script>

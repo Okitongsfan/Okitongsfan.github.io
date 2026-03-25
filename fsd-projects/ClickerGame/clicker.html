@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      p {
+        font-size: 60px;
+      }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Clicker clicker</title>
+  </head>
+
+  <body>
+    <p id="score">score =0</p>
+    <img
+      id="caleb"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtfJRgNMYFkLEvShu50i23DLZIuUgdXeswvihKCAsi7dUDrxL6:https://imgs.crazygames.com/click-click-clicker_16x9/20240206102255/click-click-clicker_16x9-cover%3Fmetadata%3Dnone%26quality%3D60%26height%3D4252&s"
+    />
+    <img
+      id="upgrade"
+      src="https://static.vecteezy.com/system/resources/thumbnails/050/703/712/small/set-of-upgrade-button-hand-pointer-clicking-upgrade-web-buttons-png.png"
+    />
+  </body>
+</html>
+<script>
+  // clcik the <img src="">score=score+1
+  let score = 0;
+  document.getElementById("caleb").addEventListener("click", scoreGoUp);
+  let multiplier = 1;
+  function scoreGoUp() {
+    score = score + multiplier;
+    document.getElementById("score").innerText = score;
+  }
+  //upgrade
+  function increaseClick() {
+    if (score >= 20) {
+      score = score - 20;
+      multiplier = multiplier + 1;
+    }
+  }
+  document.getElementById("upgrade").addEventListener("click", increaseClick);
+</script>
