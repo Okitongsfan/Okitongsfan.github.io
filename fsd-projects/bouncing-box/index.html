@@ -70,7 +70,9 @@
         //////////////////////////////////////////////////////////////////
 
         // TODO 2 - Variable declarations
-
+var positionx = 5
+var points = 0
+var speed = 10
         /**
          * This Function will be called 20 times/second.
          * Each time it is called, it should move the Box to a new location.
@@ -78,7 +80,15 @@
          */
         function update() {
           moveBoxTo(positionx);
-          positionx = positionx + 10;
+          positionx = positionx + speed;
+          if (positionx > boardWidth) {
+            speed = speed * -1 ;
+          }
+            if (positionx < 0) {
+             speed = speed * -1
+        }
+  // Code to reverse speed goes here
+
         }
 
         /**
@@ -90,7 +100,9 @@
          */
         function handleBoxClick() {
           positionx = 0;
-          changeBoxText(0);
+          changeBoxText(points);
+          points = points + 1
+          speed = 3 * points + 10;
           
         }
       })();
